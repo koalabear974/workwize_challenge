@@ -1,5 +1,15 @@
+const flowbite = require("flowbite-react/tailwind");
+
 module.exports = {
-    content: ['./src/**/*.{js,jsx,ts,tsx}'],
-    theme: {},
-    plugins: [require('@tailwindcss/forms')],
+  content: [
+    './node_modules/flowbite/**/*.js',
+    './src/**/*.{js,jsx,ts,tsx}',
+    flowbite.content(),
+  ],
+  theme: {},
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('flowbite/plugin'),
+    flowbite.plugin()
+  ],
 }

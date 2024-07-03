@@ -1,12 +1,12 @@
 'use client'
 
-import Button from '@/components/Button'
-import Input from '@/components/Input'
-import InputError from '@/components/InputError'
-import Label from '@/components/Label'
+import Input from '@/components/Forms/Input'
+import InputError from '@/components/Forms/InputError'
+import Label from '@/components/Forms/Label'
 import { useAuth } from '@/hooks/auth'
 import { useState } from 'react'
 import AuthSessionStatus from '@/app/(auth)/AuthSessionStatus'
+import { Button } from "flowbite-react";
 
 const Page = () => {
     const { forgotPassword } = useAuth({

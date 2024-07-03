@@ -1,8 +1,8 @@
 'use client'
 
-import Button from '@/components/Button'
 import { useAuth } from '@/hooks/auth'
 import { useState } from 'react'
+import { Button } from "flowbite-react";
 
 const Page = () => {
     const { logout, resendEmailVerification } = useAuth({
