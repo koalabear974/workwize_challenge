@@ -1,14 +1,18 @@
 "use client"
-import { useAuth } from "@/hooks/auth";
-import LoginForm from "@/components/Forms/LoginForm";
-import AuthCard from "@/app/(auth)/AuthCard";
-import { Button, HR } from "flowbite-react";
-import Link from "next/link";
-import Navigation from "@/components/Navigation/Navigation";
-import Loading from "@/components/Navigation/Loading";
+import { useAuth } from "@/hooks/auth"
+import LoginForm from "@/components/Forms/LoginForm"
+import AuthCard from "@/app/(auth)/AuthCard"
+import { Button, HR } from "flowbite-react"
+import Link from "next/link"
+import Navigation from "@/components/Navigation/Navigation"
+import Loading from "@/components/Navigation/Loading"
+import ProductDisplay from "@/components/Products/ProductDisplay";
 
 const Home = () => {
-  const {user, loading} = useAuth({middleware: 'guest'})
+  const {user, loading} = useAuth({
+    middleware: 'supplier',
+    redirectIfAuthenticated: '/products'
+  })
 
   if (!user && loading) {
     return <Loading />
@@ -29,15 +33,15 @@ const Home = () => {
           </div>
         </AuthCard>
       </div>
-    );
+    )
   }
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-gray-100 flex flex-col">
       <Navigation user={user}/>
 
-      <main>
-
+      <main className="flex flex-col flex-1">
+        <ProductDisplay />
       </main>
     </div>
   )

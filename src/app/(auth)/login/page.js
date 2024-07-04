@@ -1,8 +1,8 @@
 'use client'
 
 import Link from 'next/link'
-import LoginForm from "@/components/Forms/LoginForm";
-import { Button, HR } from "flowbite-react";
+import LoginForm from "@/components/Forms/LoginForm"
+import { Button, HR } from "flowbite-react"
 
 const Login = () => {
   return (

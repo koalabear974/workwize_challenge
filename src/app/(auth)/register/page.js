@@ -4,11 +4,11 @@ import {
   Button,
   Label,
   Select,
-} from "flowbite-react";
+} from "flowbite-react"
 import Link from 'next/link'
 import { useAuth } from '@/hooks/auth'
 import { useState } from 'react'
-import TextInput from "@/components/Forms/TextInput";
+import TextInput from "@/components/Forms/TextInput"
 
 const Page = () => {
   const {register} = useAuth({

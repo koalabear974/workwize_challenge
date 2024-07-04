@@ -1,4 +1,4 @@
-const flowbite = require("flowbite-react/tailwind");
+const flowbite = require("flowbite-react/tailwind")
 
 module.exports = {
   content: [

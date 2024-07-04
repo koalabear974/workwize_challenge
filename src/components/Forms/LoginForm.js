@@ -1,16 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import Link from "next/link";
+import React, { useEffect, useState } from 'react'
 
-import { useRouter } from "next/navigation";
-import { useAuth } from "@/hooks/auth";
-import AuthSessionStatus from "@/app/(auth)/AuthSessionStatus";
+import { useRouter } from "next/navigation"
+import { useAuth } from "@/hooks/auth"
+import FormStatus from "@/components/Forms/FormStatus"
 import {
   Button,
   Label,
-} from "flowbite-react";
-import TextInput from "@/components/Forms/TextInput";
+} from "flowbite-react"
+import TextInput from "@/components/Forms/TextInput"
 
-const LoginForm = ({}) => {
+const LoginForm = () => {
   const router = useRouter()
 
   const {login} = useAuth({
@@ -46,7 +45,7 @@ const LoginForm = ({}) => {
 
   return (
     <>
-      <AuthSessionStatus className="mb-4" status={status}/>
+      <FormStatus className="mb-4" status={status}/>
 
       <form onSubmit={submitForm}>
         {/* Email Address */}
@@ -104,18 +103,12 @@ const LoginForm = ({}) => {
         </div>
 
         <div className="flex items-center justify-end mt-4">
-          <Link
-            href="/forgot-password"
-            className="underline text-sm text-gray-600 hover:text-gray-900">
-            Forgot your password?
-          </Link>
-
           <Button className="ml-3" type="submit">Login</Button>
         </div>
       </form>
     </>
 
-  );
-};
+  )
+}
 
-export default LoginForm;
+export default LoginForm

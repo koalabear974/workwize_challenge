@@ -1,5 +1,5 @@
-import React from 'react';
-import { TextInput as FlowbiteTextInput } from 'flowbite-react';
+import React from 'react'
+import { TextInput as FlowbiteTextInput } from 'flowbite-react'
 
 
 const TextInput = ({error, ...props}) => {
@@ -21,7 +21,7 @@ const TextInput = ({error, ...props}) => {
     <FlowbiteTextInput
       {...inputProps}
     />
-  );
-};
+  )
+}
 
-export default TextInput;
+export default TextInput

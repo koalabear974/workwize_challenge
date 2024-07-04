@@ -1,6 +1,6 @@
 import useSWR from 'swr'
 import axios from '@/lib/axios'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 
 export const useAuth = ({middleware, redirectIfAuthenticated} = {}) => {
@@ -8,9 +8,9 @@ export const useAuth = ({middleware, redirectIfAuthenticated} = {}) => {
   const params = useParams()
   const [loading, setLoading] = useState(true)
 
-  const fetchUser = async () => {
+  const fetchUser = async (url) => {
     try {
-      const response = await axios.get('/api/user')
+      const response = await axios.get(url)
       return response.data
     } catch (error) {
       if (error.response.status !== 409) throw error
@@ -107,6 +107,8 @@ export const useAuth = ({middleware, redirectIfAuthenticated} = {}) => {
 
   useEffect(() => {
     if (middleware === 'guest' && redirectIfAuthenticated && user)
+      router.push(redirectIfAuthenticated)
+    if (middleware === 'supplier' && redirectIfAuthenticated && user?.role === 'supplier')
       router.push(redirectIfAuthenticated)
     if (
       window.location.pathname === '/verify-email' &&
