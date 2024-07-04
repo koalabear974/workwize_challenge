@@ -141,6 +141,13 @@ const Navigation = ({ user }) => {
 
             <div className="mt-3 space-y-1">
               {/* Authentication */}
+              {['user'].includes(user?.role) && (
+                <Link href="/cart">
+                  <ResponsiveNavButton onClick={() => {}}>
+                    Cart
+                  </ResponsiveNavButton>
+                </Link>
+              )}
               <ResponsiveNavButton onClick={logout}>
                 Logout
               </ResponsiveNavButton>
