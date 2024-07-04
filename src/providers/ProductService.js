@@ -63,6 +63,7 @@ export const updateProduct = async ({ setErrors, setStatus, ...props }) => {
       setErrors(error.response.data.errors)
     })
 }
+
 export const deleteProduct = async ({ setErrors = () => {}, setStatus = () => {}, ...props }) => {
   setErrors([])
   setStatus(null)

@@ -6,7 +6,8 @@ import { Button, HR } from "flowbite-react"
 import Link from "next/link"
 import Navigation from "@/components/Navigation/Navigation"
 import Loading from "@/components/Navigation/Loading"
-import ProductDisplay from "@/components/Products/ProductDisplay";
+import ProductDisplay from "@/components/Products/ProductDisplay"
+import { CartProvider } from '@/providers/CartContext'
 
 const Home = () => {
   const {user, loading} = useAuth({
@@ -37,13 +38,15 @@ const Home = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col">
-      <Navigation user={user}/>
+    <CartProvider>
+      <div className="min-h-screen bg-gray-100 flex flex-col">
+        <Navigation user={user}/>
 
-      <main className="flex flex-col flex-1">
-        <ProductDisplay />
-      </main>
-    </div>
+        <main className="flex flex-col flex-1">
+          <ProductDisplay />
+        </main>
+      </div>
+    </CartProvider>
   )
 }
 

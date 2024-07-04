@@ -100,9 +100,12 @@ export const useAuth = ({middleware, redirectIfAuthenticated} = {}) => {
   const logout = async () => {
     if (!error) {
       await axios.post('/logout').then(() => mutate())
+      localStorage.setItem('cart', [])
     }
 
-    window.location.pathname = '/login'
+    if (window && window.location) {
+      window.location.pathname = '/login'
+    }
   }
 
   useEffect(() => {
@@ -111,7 +114,7 @@ export const useAuth = ({middleware, redirectIfAuthenticated} = {}) => {
     if (middleware === 'supplier' && redirectIfAuthenticated && user?.role === 'supplier')
       router.push(redirectIfAuthenticated)
     if (
-      window.location.pathname === '/verify-email' &&
+      window && window.location && window.location.pathname === '/verify-email' &&
       user?.email_verified_at
     )
       router.push(redirectIfAuthenticated)

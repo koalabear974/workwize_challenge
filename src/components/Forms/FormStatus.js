@@ -4,7 +4,7 @@ const FormStatus = ({ status, errors = [], className, ...props }) => (
     <>
         {status && (
           <Alert className={`${className}`} color="success" {...props}>
-            <span className="font-medium">Success!</span> {status}
+            <span className="font-bold">Success!</span> {status}
           </Alert>
         )}
         {errors && errors.length > 0 && (
@@ -20,7 +20,7 @@ const FormStatus = ({ status, errors = [], className, ...props }) => (
             )}
             {...props}
           >
-            <span className="font-medium">Error!</span>
+            <span className="font-bold">Error!</span>
           </Alert>
         )}
     </>

@@ -8,12 +8,11 @@ import {
 } from "flowbite-react"
 import TextInput from "@/components/Forms/TextInput"
 import { HiOutlineCurrencyEuro } from 'react-icons/hi'
-import { createProduct, updateProduct } from '@/services/ProductService'
+import { createProduct, updateProduct } from '@/providers/ProductService'
 
-const ProductForm = ( {product = {}}) => {
+const ProductForm = ( {product = null}) => {
   const submitForm = async event => {
     event.preventDefault()
-
     if (product) {
       updateProduct({
         id: product.id,

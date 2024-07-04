@@ -14,38 +14,55 @@ Here are the main requirements for this project:
 
 ## Setup & Instalation
 
-Frontend is based on Laravel with Breeze for a quick Auth setup.
+Frontend is based on this starter kit: https://github.com/laravel/breeze-next which use next.js and already 
 Here is how to install:
 - Clone the repository
 - Run `npm install` or `yarn install`
 - Copy .env.example to .env and setup required configuration (notably NEXT_PUBLIC_BACKEND_URL)
 - Run `npm run dev` to run the server on local
 
+
+### Deploy
+
+Currently, this repo is hosted on Vercel and has an automatic CI whenever pushed to the repo.
+
+For manual deploy: `npm run build && vercel . --prod`
+
 ## Walkthrough to development
 
 Here you will see what steps I went through to develop this project.
+Tech stack: Next.js, React, Tailwind, Flowbite
 
 ### Research and setup
 
 1. Research & trials of boilerplates & Starter kits
 2. Once a good candidate has been chosen and tested in local I went through online setup.
 3. First I created a online database for ease of use and future online setup
-4. For the backend I first try hosting on Vercel but had some issues ended up hosting on DigitalOcean as PHP instances generaly require a whole LAMP stack.
+4. For the backend I first tried hosting on Vercel but had some issues ended up hosting on DigitalOcean as PHP instances generaly require a whole LAMP stack.
 5. For the frontend Vercel offer a pretty easy and free hosting for react so I went for that.
 6. Once everything was working while being hosted I went back to local for development
 
 ### Structure and Planning
 
-1. First I laid down which requirements are needed for backend and frontend by doin that I had a clear view on what models, routes, controller and pages I would need
+1. First I laid down which requirements are needed for backend and frontend by doing that I had a clear view on what models, routes, controller and pages I would need
 2. Created all migrations needed to create and modify tables
-3. Created related seeders
 
 ### Development
 
+1. [BE] Added all models, related factories and seeders
+2. [BE] Added Product controller, added tests for it and added an AuthServiceProvider to ensure products are modified by the roles
+2. [BE] Added Order Controller and added tests for it
+3. [BE] Updated all the related routes
+4. [FE] Updated all auth pages to fit requirements
+5. [FE] Added Product page for user & supplier
+6. [FE] Added CRUD pages for supplier
+7. [FE] Added cart system for users and order creation
+8. [BE] Added method to fetch and update order
+9. [FE] Added user and supplier view for their orders
+10. [FE] Added all admin routes and update all views to fit
 
+### Things to improve
+- Styling (Loading states, branding etc.)
+- Stock management
+- Find a solution for multiple supplier in one order 
 
-Next, clone this repository and install its dependencies with `yarn install` or `npm install`. Then, copy the `.env.example` file to `.env` and supply the URL of your backend:
-
-```
-VITE_APP_BACKEND_URL=http://localhost:8000
-```

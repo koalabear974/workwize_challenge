@@ -7,10 +7,12 @@ import ResponsiveNavLink, {
 import { useAuth } from '@/hooks/auth'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
-import { Dropdown } from "flowbite-react";
+import { Dropdown } from 'flowbite-react'
+import { HiLogout } from 'react-icons/hi'
+import CartDropdown from '@/components/Cart/CartDropdown'
 
-const Navigation = ({user}) => {
-  const {logout} = useAuth()
+const Navigation = ({ user }) => {
+  const { logout } = useAuth()
 
   const [open, setOpen] = useState(false)
 
@@ -23,12 +25,12 @@ const Navigation = ({user}) => {
             {/* Logo */}
             <div className="flex-shrink-0 flex items-center">
               <Link href="/public">
-                <ApplicationLogo className="block w-4 w-auto fill-current text-gray-600"/>
+                <ApplicationLogo className="block w-4 w-auto fill-current text-gray-600" />
               </Link>
             </div>
 
             <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-              {['admin', 'supplier'].includes(user.role) && (
+              {['admin', 'supplier'].includes(user?.role) && (
                 <NavLink
                   href="/products"
                   active={usePathname() === '/products'}>
@@ -44,13 +46,16 @@ const Navigation = ({user}) => {
           </div>
 
           {/* Settings Dropdown */}
-          <div className="hidden sm:flex sm:items-center sm:ml-6">
+          <div className="hidden sm:flex sm:items-center sm:ml-6 gap-2">
+            {['user'].includes(user?.role) && (
+              <CartDropdown />
+            )}
             <Dropdown
               label={user?.name}
               color="gray"
               dismissOnClick={false}
             >
-              <Dropdown.Item onClick={logout}>Logout</Dropdown.Item>
+              <Dropdown.Item icon={HiLogout} onClick={logout}>Logout</Dropdown.Item>
             </Dropdown>
           </div>
 
@@ -91,7 +96,7 @@ const Navigation = ({user}) => {
       {open && (
         <div className="block sm:hidden">
           <div className="pt-2 pb-3 space-y-1">
-            {['admin', 'supplier'].includes(user.role) && (
+            {['admin', 'supplier'].includes(user?.role) && (
               <ResponsiveNavLink
                 href="/products"
                 active={usePathname() === '/products'}>
